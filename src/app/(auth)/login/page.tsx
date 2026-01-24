@@ -2,6 +2,12 @@ import { GalleryVerticalEnd } from "lucide-react"
 
 import { LoginForm } from "@/modules/(auth)/login/components/login-form"
 import Link from "next/link"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login | NeuroPath AI",
+  description: "Login to your NeuroPath AI account",
+};
 
 export default function LoginPage() {
   return (

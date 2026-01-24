@@ -2,12 +2,6 @@ import { z } from "zod"
 
 // Custom error messages
 const ERROR_MESSAGES = {
-  name: {
-    required: "Name is required",
-    minLength: "Name must be at least 2 characters",
-    maxLength: "Name must not exceed 50 characters",
-    invalid: "Name can only contain letters, spaces, hyphens, and apostrophes",
-  },
   email: {
     required: "Email is required",
     invalid: "Please enter a valid email address",
@@ -20,14 +14,8 @@ const ERROR_MESSAGES = {
 }
 
 // User Signup Schema
-export const UserSignupSchema = z
+export const UserLoginSchema = z
   .object({
-    name: z
-      .string({ message: ERROR_MESSAGES.name.required })
-      .trim()
-      .min(2, { message: ERROR_MESSAGES.name.minLength })
-      .max(50, { message: ERROR_MESSAGES.name.maxLength }),
-
     email: z
       .string({ message: ERROR_MESSAGES.email.required })
       .trim()
@@ -41,4 +29,4 @@ export const UserSignupSchema = z
       .max(128, { message: ERROR_MESSAGES.password.maxLength })
   })
 
-export default UserSignupSchema
+export default UserLoginSchema

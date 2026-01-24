@@ -1,9 +1,15 @@
 import { GalleryVerticalEnd } from "lucide-react"
 
-import { ForgotPasswordForm } from "@/modules/(auth)/forgot-password/components/forgot-password-form"
+import { ResetPasswordForm } from "@/modules/(auth)/reset-password/components/reset-password-form"
 import Link from "next/link"
+import { Metadata } from "next";
 
-export default function ForgotPasswordPage() {
+export const metadata: Metadata = {
+  title: "Reset Password | NeuroPath AI",
+  description: "Reset your password with the token sent to your email.",
+};
+
+export default function ResetPasswordPage() {
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
@@ -13,7 +19,7 @@ export default function ForgotPasswordPage() {
           </div>
           NeuroPath AI
         </Link>
-        <ForgotPasswordForm />
+        <ResetPasswordForm />
       </div>
     </div>
   )

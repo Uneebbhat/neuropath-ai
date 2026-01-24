@@ -20,12 +20,20 @@ import { Input } from "@/components/ui/input"
 import useTogglePassword from "@/hooks/useTogglePassword"
 import { Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
+import useLogin from "../hooks/useLogin"
+import { Spinner } from "@/components/ui/spinner"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
   const { showPassword, handleTogglePassword } = useTogglePassword()
+  const {
+    loading,
+    formData,
+    handleOnChange,
+    handleOnSubmit,
+  } = useLogin()
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -37,7 +45,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleOnSubmit}>
             <FieldGroup>
               {/* <Field>
                 <Button variant="outline" type="button">
@@ -69,6 +77,9 @@ export function LoginForm({
                   type="email"
                   placeholder="m@example.com"
                   required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleOnChange}
                 />
               </Field>
               <Field>
@@ -82,7 +93,7 @@ export function LoginForm({
                   </Link>
                 </div>
                 <div className="relative">
-                  <Input id="password" type={showPassword ? "text" : "password"} placeholder="password" name="password" required />
+                  <Input id="password" type={showPassword ? "text" : "password"} placeholder="password" name="password" required value={formData.password} onChange={handleOnChange} />
                   {
                     showPassword ?
                       <EyeOff className="size-5 absolute right-3 cursor-pointer top-1/2 -translate-y-1/2" onClick={handleTogglePassword} /> :
@@ -91,7 +102,14 @@ export function LoginForm({
                 </div>
               </Field>
               <Field>
-                <Button>Login</Button>
+                <Button disabled={loading || !formData.email || !formData.password}>
+                  {
+                    loading ? <>
+                      <Spinner />
+                      Login
+                    </> : "Login"
+                  }
+                </Button>
                 <FieldDescription className="text-center">
                   Don&apos;t have an account? <Link href="/signup">Sign up</Link>
                 </FieldDescription>

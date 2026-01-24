@@ -1,15 +1,9 @@
 import { GalleryVerticalEnd } from "lucide-react"
 
-import { SignupForm } from "@/modules/(auth)/signup/components/signup-form"
+import { OnboardForm } from "@/modules/onboard/components/onboard-form"
 import Link from "next/link"
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Sign up | NeuroPath AI",
-  description: "Create an account to get started with NeuroPath AI",
-};
-
-export default function SignupPage() {
+export default function OnboardPage() {
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
@@ -19,7 +13,7 @@ export default function SignupPage() {
           </div>
           NeuroPath AI
         </Link>
-        <SignupForm />
+        <OnboardForm />
       </div>
     </div>
   )

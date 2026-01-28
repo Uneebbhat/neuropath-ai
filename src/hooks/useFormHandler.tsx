@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HandleOnChange, HandleOnFileChange } from "@/types/FormTypes";
+import { StepConfig } from "@/modules/onboard/types/types";
 
 const useFormHandler = <T,>(initialState: T) => {
   const [formData, setFormData] = useState<T>(initialState);
@@ -10,6 +11,10 @@ const useFormHandler = <T,>(initialState: T) => {
   const handleOnChange = (e: HandleOnChange) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleValueChange = (value: string, currentStepConfig?: StepConfig) => {
+    setFormData({ ...formData, [currentStepConfig!.key]: value });
   };
 
   const handleOnFileChange = (e: HandleOnFileChange) => {
@@ -28,6 +33,7 @@ const useFormHandler = <T,>(initialState: T) => {
     setLoading,
     setFormData,
     handleOnChange,
+    handleValueChange,
     handleOnFileChange,
   };
 };

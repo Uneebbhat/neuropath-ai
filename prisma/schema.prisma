@@ -14,13 +14,14 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(cuid())
-  name           String
-  email          String          @unique
-  password       String
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  passwordResets PasswordReset[]
+  id                   String                @id @default(cuid())
+  name                 String
+  email                String                @unique
+  password             String
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  passwordResets       PasswordReset[]
+  onboardingPreference OnboardingPreference?
 }
 
 model PasswordReset {
@@ -34,5 +35,19 @@ model PasswordReset {
   updatedAt DateTime @updatedAt
 
   @@index([token])
+  @@index([userId])
+}
+
+model OnboardingPreference {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal               String
+  level              String
+  learningPreference String
+  constraints        String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
   @@index([userId])
 }

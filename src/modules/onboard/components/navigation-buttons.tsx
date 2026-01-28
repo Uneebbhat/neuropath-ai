@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { NavigationButtonsProps } from "../types/types";
+import { Spinner } from "@/components/ui/spinner";
 
 export function NavigationButtons({
   currentStep,
@@ -8,6 +9,7 @@ export function NavigationButtons({
   onPrevious,
   onNext,
   onSubmit,
+  loading,
 }: NavigationButtonsProps) {
   return (
     <div className="flex justify-between pt-4">
@@ -15,19 +17,39 @@ export function NavigationButtons({
         type="button"
         variant="outline"
         onClick={onPrevious}
-        disabled={currentStep === 1}
+        disabled={currentStep === 1 || loading}
       >
-        Previous
+        {loading ? (
+          <>
+            <Spinner />
+            Previous
+          </>
+        ) : (
+          "Previous"
+        )}
       </Button>
       {currentStep < totalSteps ? (
         <Button type="button" onClick={onNext} disabled={!isValid}>
-          Next
+          {loading ? (
+            <>
+              <Spinner /> Next
+            </>
+          ) : (
+            "Next"
+          )}
         </Button>
       ) : (
         <Button type="button" onClick={onSubmit} disabled={!isValid}>
-          Complete
+          {loading ? (
+            <>
+              <Spinner />
+              Complete
+            </>
+          ) : (
+            "Complete"
+          )}
         </Button>
       )}
     </div>
-  )
+  );
 }

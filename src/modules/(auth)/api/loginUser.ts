@@ -1,8 +1,8 @@
 import axios from "axios";
-import { APIResponse, LoginFormData } from "../types/types";
+import { APIResponse, LoginFormData, UserData } from "../types/types";
 
 const loginUser = async (data: LoginFormData) => {
-  return axios.post<APIResponse>("/api/login", data)
-}
+  return axios.post<APIResponse<UserData>>("/api/login", data);
+};
 
-export default loginUser
+export default loginUser;

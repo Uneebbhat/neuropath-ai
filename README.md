@@ -10,7 +10,6 @@
   - Password reset via email
   - Secure password hashing with bcrypt
 - **🎯 Personalized Onboarding**: Capture learning preferences and goals
-- **📊 Behavior-Based Adaptation**: AI analyzes learning patterns and adapts content
 - **💬 Interactive Chat Interface**: Stream AI responses in real-time
 - **🔒 Protected Routes**: Secure authentication guards for protected pages
 - **📧 Email Integration**: Nodemailer for password reset emails
@@ -37,7 +36,6 @@
 ### AI & APIs
 - **Vercel AI SDK** - AI integration framework
 - **@ai-sdk/google** - Google Gemini integration
-- **@ai-sdk/xai** - xAI integration
 
 ### State Management & Utilities
 - **Zustand** - Lightweight state management
@@ -60,7 +58,7 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Uneebbhat/neuropath-ai.git
 cd neuropath-ai
 ```
 
@@ -94,7 +92,6 @@ EMAIL_FROM="NeuroPath AI <your-email@gmail.com>"
 
 # AI API Keys
 GOOGLE_GENERATIVE_AI_API_KEY="your-google-gemini-api-key"
-XAI_API_KEY="your-xai-api-key"
 
 # Application URL
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
@@ -341,8 +338,7 @@ neuropath-ai/
 
 ### AI Chat System
 - Real-time streaming responses using Vercel AI SDK
-- Supports Google Gemini and xAI models
-- Conversation history stored in database
+- Supports Google Gemini
 - Markdown rendering for formatted responses
 
 ### State Management

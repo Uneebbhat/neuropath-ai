@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import useChat from "@/modules/chat/hooks/useChat";
 import { Input } from "@/components/ui/input";
 import ReactMarkdown from "react-markdown";
+import RequireAuth from "@/components/RequireAuth";
 
 export default function ChatPage() {
   const { prompt, setPrompt, response, loading, error, generatePrompt } =
@@ -20,9 +21,11 @@ export default function ChatPage() {
   }, [response, loading]);
 
   return (
-    <section className="h-screen w-full bg-background text-foreground flex flex-col items-center justify-between px-4 py-6">
-      {/* Header */}
-      <div className="w-full max-w-3xl">
+    <>
+      <RequireAuth />
+      <section className="h-screen w-full bg-background text-foreground flex flex-col items-center justify-between px-4 py-6">
+        {/* Header */}
+        <div className="w-full max-w-3xl">
         <h1 className="text-3xl font-bold mb-6 text-center">
           🧠 AI Prompt Assistant
         </h1>
@@ -85,6 +88,7 @@ export default function ChatPage() {
           </Button>
         </form>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

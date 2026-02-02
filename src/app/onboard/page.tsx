@@ -3,6 +3,7 @@ import { GalleryVerticalEnd } from "lucide-react";
 import { OnboardForm } from "@/modules/onboard/components/onboard-form";
 import Link from "next/link";
 import { Metadata } from "next";
+import RequireAuth from "@/components/RequireAuth";
 
 export const metadata: Metadata = {
   title: "Onboarding - NeuroPath AI",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function OnboardPage() {
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+      <RequireAuth />
       <div className="flex w-full max-w-sm flex-col gap-6">
         <Link
           href="/"
